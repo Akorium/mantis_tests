@@ -14,6 +14,10 @@ namespace mantis_tests
         public FTPHelper FtpHelper { get; set; }
         public JamesHelper JamesHelper { get; set; }
         public MailHelper MailHelper { get; set; }
+        public AuthorizationHelper AuthorizationHelper { get; set; }
+        public NavigationHelper NavigationHelper { get; set; }
+        public ProjectHelper ProjectHelper { get; set; }
+        public RandomDataProvider RandomDataProvider { get; set; }
 
         private static readonly ThreadLocal<ApplicationManager> applicationManager = new ThreadLocal<ApplicationManager>();
 
@@ -21,10 +25,15 @@ namespace mantis_tests
         {
             driver = new FirefoxDriver();
             baseURL = "http://localhost/addressbook";
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(0.07);
             RegistrationHelper = new RegistrationHelper(this);
             FtpHelper = new FTPHelper(this);
             JamesHelper = new JamesHelper(this);
             MailHelper = new MailHelper(this);
+            AuthorizationHelper = new AuthorizationHelper(this);
+            NavigationHelper = new NavigationHelper(this);
+            ProjectHelper = new ProjectHelper(this);
+            RandomDataProvider = new RandomDataProvider(this);
         }
         ~ApplicationManager()
         {
