@@ -18,13 +18,14 @@ namespace mantis_tests
         public NavigationHelper NavigationHelper { get; set; }
         public ProjectHelper ProjectHelper { get; set; }
         public RandomDataProvider RandomDataProvider { get; set; }
+        public AdminHelper AdminHelper { get; set; }
 
         private static readonly ThreadLocal<ApplicationManager> applicationManager = new ThreadLocal<ApplicationManager>();
 
         private ApplicationManager()
         {
             driver = new FirefoxDriver();
-            baseURL = "http://localhost/addressbook";
+            baseURL = "http://localhost/mantisbt-2.25.7/";
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(0.07);
             RegistrationHelper = new RegistrationHelper(this);
             FtpHelper = new FTPHelper(this);
@@ -34,6 +35,7 @@ namespace mantis_tests
             NavigationHelper = new NavigationHelper(this);
             ProjectHelper = new ProjectHelper(this);
             RandomDataProvider = new RandomDataProvider(this);
+            AdminHelper = new AdminHelper(this, baseURL);
         }
         ~ApplicationManager()
         {
