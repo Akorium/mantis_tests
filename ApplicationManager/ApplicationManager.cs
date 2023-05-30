@@ -19,6 +19,7 @@ namespace mantis_tests
         public ProjectHelper ProjectHelper { get; set; }
         public RandomDataProvider RandomDataProvider { get; set; }
         public AdminHelper AdminHelper { get; set; }
+        public APIHelper APIHelper { get; set; }
 
         private static readonly ThreadLocal<ApplicationManager> applicationManager = new ThreadLocal<ApplicationManager>();
 
@@ -36,6 +37,7 @@ namespace mantis_tests
             ProjectHelper = new ProjectHelper(this);
             RandomDataProvider = new RandomDataProvider(this);
             AdminHelper = new AdminHelper(this, baseURL);
+            APIHelper = new APIHelper(this);
         }
         ~ApplicationManager()
         {

@@ -23,7 +23,7 @@ namespace mantis_tests
             driver.FindElement(By.XPath("//input[@value='Добавить проект']")).Click();
         }
 
-        internal List<ProjectData> CheckProject(int projectInDB)
+        public List<ProjectData> CheckProject(int projectInDB)
         {
             List<ProjectData> projects = ProjectData.GetProjects();
             int projectsToAdd = ++projectInDB - projects.Count;
